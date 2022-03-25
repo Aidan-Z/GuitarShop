@@ -13,7 +13,7 @@ public interface Repo extends JpaRepository <GuitarModels, Long> {
 
 	List<GuitarModels> findByYear(int year);
 
-	List<GuitarModels> findByPrice(int price);
+	List<GuitarModels> findByPrice(float price);
 
 	List<GuitarModels> findByModel(String model);
 
@@ -26,6 +26,8 @@ public interface Repo extends JpaRepository <GuitarModels, Long> {
 	List<GuitarModels> findBygoodForMetal(boolean bool);
 
 	List<GuitarModels> findByroseWood(boolean bool);
+
+	
 	
 	
 

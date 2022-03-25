@@ -1,5 +1,8 @@
 package com.work.project.testing.Service;
 
+
+
+
 import java.util.Optional;
 
 import org.junit.jupiter.api.Assertions;
@@ -8,6 +11,7 @@ import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+
 
 import com.work.project.model.GuitarModels;
 
@@ -31,7 +35,6 @@ public class ServiceTest {
 	//Create Order:
 	@Test
 	public void testCreate() {
-		
 		Mockito.when(repo.save(testOrder1)).thenReturn(testOrder1ID);
 		GuitarModels result = service.orderGuitar(testOrder1);
 		System.out.println(result);
@@ -43,7 +46,13 @@ public class ServiceTest {
 
 	}
 	
-	//Get Orders:
+	// Get Orders:
+	
+	
+	
+	
+	
+
 	
 	
 	//Get by ID:
@@ -60,11 +69,45 @@ public class ServiceTest {
 	
 	
 	
+	
 	//Change order (replace by id):
+	
+	
 	//Search by Strings:
+	@Test
+	public void testGetStrings() {
+	//	Mockito.when(repo.findByStrings(6)).thenReturn(testOrder1ID);
+		
+		
+		
+	}
+	
+	//mock ->findStrings
+		//Assert getby strings
+	
+	
 	//Search by Year:
 	//Search by Price:
+	
 	//Search for Model;
+		@Test
+		public void testModel() {
+			
+			//Arrange
+			// get-> model
+			// return guitars with specified model?
+			
+			//Act
+			
+			//Assertion
+			
+			
+		}
+	
+	
+	
+	
+	
 	//Get Body type:
 	//Select pickups:
 	//Select Pickup Configuration:

@@ -111,7 +111,7 @@ public class ControllerGMTest {
 		List<GuitarModels> getStrings = List.of(testOrderID);
 		String allStringsJson = mapper.writeValueAsString(getStrings);
 		
-		RequestBuilder req = get("/getStrings/6");
+		RequestBuilder req = get("/getstrings/6");
 		
 		ResultMatcher checkStatus = status().isAccepted();
 		ResultMatcher checkBody = content().json(allStringsJson);
@@ -124,7 +124,8 @@ public class ControllerGMTest {
 	@Test
 	public void testGetYear() throws Exception {
 		
-		String testGetYearJson = mapper.writeValueAsString(testOrderID);
+		List<GuitarModels> testGetYear = List.of(testOrderID);
+		String testGetYearJson = mapper.writeValueAsString(testGetYear);
 		
 		RequestBuilder req = get("/getYear/1998");
 				
@@ -138,10 +139,10 @@ public class ControllerGMTest {
 	//Search by Price:
 	@Test
 	public void testGetPrice() throws Exception {
+		List<GuitarModels> allModels = List.of(testOrderID);
+		String testGetPriceJson = mapper.writeValueAsString(allModels);
 		
-		String testGetPriceJson = mapper.writeValueAsString(testOrderID);
-		
-		RequestBuilder req = get("/getPrice/700.00");
+		RequestBuilder req = get("/getPrice/?price=770.00");
 				
 		ResultMatcher checkStatus = status().isAccepted();
 		ResultMatcher checkBody = content().json(testGetPriceJson);
@@ -154,11 +155,11 @@ public class ControllerGMTest {
 	@Test
 	public void testModel() throws Exception {
 		
-		List<GuitarModels> allModels = List.of(testOrderID, testOrderID2);
+		List<GuitarModels> allModels = List.of(testOrderID);
 		
 		String allModelsJson = mapper.writeValueAsString(allModels);
 		
-		RequestBuilder req = get("/getModel");
+		RequestBuilder req = get("/getModel/tele");
 		
 		ResultMatcher checkStatus = status().isAccepted();
 		ResultMatcher checkBody = content().json(allModelsJson);
@@ -169,13 +170,13 @@ public class ControllerGMTest {
 	
 	//Select Body type:
 	@Test
-	public void testBody() throws Exception {
+	public void testBody() throws Exception { 
 		
-		List<GuitarModels> testBody = List.of(testOrderID, testOrderID2); 
+		List<GuitarModels> testBody = List.of(testOrderID); 
 		
 		String testBodyJson = mapper.writeValueAsString(testBody);
 		
-		RequestBuilder req = get("/selectBody/maple");
+		RequestBuilder req = post("/selectBody/maple");
 		
 		ResultMatcher checkStatus = status().isAccepted();
 		ResultMatcher checkBody = content().json(testBodyJson); 
@@ -222,11 +223,43 @@ public class ControllerGMTest {
 	
 	
 	//Query: Good For Metal?:
-	
-	
+	@Test
+	public void testMetal() throws Exception {
+		
+		List<GuitarModels> testMetal = List.of(testOrderID);
+		
+		String testMetalJson = mapper.writeValueAsString(testMetal);
+		
+		RequestBuilder req = get("/metal/{bool}");
+		
+		ResultMatcher checkStatus = status().isAccepted();
+		ResultMatcher checkBody = content().json(testMetalJson);
+		
+		mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+		
+		
+	}
 	
 	
 	//Query: RoseWood?:
+	@Test
+public void testRoseWood() throws Exception {
+		
+		List<GuitarModels> testWood = List.of(testOrderID);
+		
+		String testWoodJson = mapper.writeValueAsString(testWood);
+		
+		RequestBuilder req = get("/roseWood/{bool}");
+		
+		ResultMatcher checkStatus = status().isAccepted();
+		ResultMatcher checkBody = content().json(testWoodJson);
+		
+		mvc.perform(req).andExpect(checkStatus).andExpect(checkBody);
+		
+		
+	}
+	
+	
 	
 	
 	//Cancel Order

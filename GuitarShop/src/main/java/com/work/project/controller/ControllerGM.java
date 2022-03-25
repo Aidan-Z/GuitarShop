@@ -3,6 +3,8 @@ package com.work.project.controller;
 //import java.util.ArrayList;
 import java.util.List;
 
+import javax.websocket.server.PathParam;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -89,8 +91,8 @@ public class ControllerGM {
 	
 	
 	//Search by Price:
-	@GetMapping("/getPrice/{price}")
-	public ResponseEntity<List<GuitarModels>> getByPrice(@PathVariable("price") int price) {
+	@GetMapping("/getPrice/")
+	public ResponseEntity<List<GuitarModels>> getByPrice(@PathParam("price") float price) {
 		
 		List<GuitarModels> response = service.getByPrice(price);
 		return new ResponseEntity<>(response, HttpStatus.ACCEPTED);
@@ -116,8 +118,8 @@ public class ControllerGM {
 	
 	
 	//Select pickups:
-	@PutMapping ("/select/{pickups}")
-	public ResponseEntity<List<GuitarModels>> getByPickups(@PathVariable("Pickups") String Pickups) {
+	@PutMapping ("/selectPickups/{pickup}")
+	public ResponseEntity<List<GuitarModels>> getByPickups(@PathVariable("pickup") String Pickups) {
 		
 		List<GuitarModels> response = service.getByPickups(Pickups);
 		return new ResponseEntity<>(response, HttpStatus.ACCEPTED);

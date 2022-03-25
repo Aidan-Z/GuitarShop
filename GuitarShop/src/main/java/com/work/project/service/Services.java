@@ -59,6 +59,9 @@ public class Services {
 	public List<GuitarModels> getByStrings(int strings) {
 		return repo.findByStrings(strings);
 	}
+	
+	//mock ->findStrings
+	//Assert getby strings
 
 	//Search by Year:
 	public List<GuitarModels> getByYear(int year) {
@@ -66,7 +69,7 @@ public class Services {
 	}
 
 	//Search by Price:
-	public List<GuitarModels> getByPrice(int price) {
+	public List<GuitarModels> getByPrice(float price) {
 		return repo.findByPrice(price);
 	}
 	
