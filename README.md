@@ -16,4 +16,4 @@
 JIRA Board Link:
 https://aidanzamfir1.atlassian.net/jira/software/projects/QFJP/boards/2
 
-I should apologise to the tutor marking this, it wasnt my best work.
+I should apologise to the tutor marking this, it wasn't my best work.
